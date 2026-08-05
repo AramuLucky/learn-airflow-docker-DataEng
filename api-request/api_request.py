@@ -1,6 +1,10 @@
 import requests
+import os
+from dotenv import load_dotenv
 
-api_key = "ed3367e70276d6ae1d9f860a5174ed43"
+load_dotenv()
+api_key = os.getenv("API_KEY")
+# api_key = '539d4ccb3886efd2c916ebecf50818b7'
 api_url = f"https://api.weatherstack.com/current?access_key={api_key}&query=Bangkok"
 
 def fetch_data():
@@ -12,7 +16,7 @@ def fetch_data():
         # print(response.json())
         return response.json()
 
-    except request.exceptions.RequestException as e:
+    except requests.exceptions.RequestException as e:
         print(f"An error occurred: {e}")
         raise
 
