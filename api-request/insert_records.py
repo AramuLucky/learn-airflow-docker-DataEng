@@ -1,12 +1,12 @@
 import psycopg2
-from api_request import mock_fetch_data
+from api_request import mock_fetch_data, fetch_data
 
 def connect_to_db():
     print("Connect to the PostgresSQL database...")
     try:
         conn = psycopg2.connect(
-            host="localhost",
-            port=5000,
+            host="db",
+            port=5432,
             dbname="db",
             user="db_user",
             password="db_password"
@@ -43,7 +43,7 @@ def insert_records(conn, data):
     print("Inserting weather data into the database...")
     try:
         location = data['location']
-        weather = data['current']        
+        weather = data['current']
         cursor = conn.cursor()
         cursor.execute("""
             INSERT INTO dev.raw_weather_data (
@@ -71,7 +71,8 @@ def insert_records(conn, data):
 
 def main():
     try:
-        data = mock_fetch_data()
+        # data = mock_fetch_data()
+        data = fetch_data()
         conn = connect_to_db()
         create_table(conn)
         insert_records(conn, data)
