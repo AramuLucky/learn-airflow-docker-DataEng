@@ -2,6 +2,6 @@
 <h3 align="center">cr. https://www.youtube.com/watch?v=vMgFadPxOLk</h3>
 
 <p align="center">
-  <img src="" alt="Superset's Picture">
+  <img src="weather-dashboard.png" alt="Superset's Picture">
 </p>
  
